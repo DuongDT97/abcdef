@@ -21,7 +21,7 @@ namespace test2.Controllers
         public IActionResult Privacy()
         {
             //test
-            return CacheProfile();
+            return View();
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
