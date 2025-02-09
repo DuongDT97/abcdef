@@ -1,0 +1,72 @@
+﻿@model test2.Models.Food
+
+@{
+    ViewData["Title"] = "Update";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Update</h1>
+
+<h4>Food</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Update" enctype="multipart/form-data" method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="MonAnID" class="control-label"></label>
+                <input asp-for="MonAnID" class="form-control" readonly />
+                <small class="form-text text-muted">Mã của món ăn sẽ được tự động điền và không thể thay đổi.</small>
+                <span asp-validation-for="MonAnID" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Ten" class="control-label"></label>
+                <input asp-for="Ten" class="form-control" />
+                <span asp-validation-for="Ten" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="MoTa" class="control-label"></label>
+                <input asp-for="MoTa" class="form-control" />
+                <span asp-validation-for="MoTa" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Gia" class="control-label"></label>
+                <input asp-for="Gia" class="form-control" />
+                <span asp-validation-for="Gia" class="text-danger"></span>
+            </div>
+            <label asp-for="HinhAnh" class="control-label"></label>
+            <!-- Hiển thị hình ảnh hiện tại nếu có -->
+            @if (!string.IsNullOrEmpty(Model.HinhAnh))
+            {
+                <img src="@Model.HinhAnh" alt="Hình ảnh hiện tại" style="max-width: 200px; max-height: 200px; display: block; margin-bottom: 10px;" />
+            }
+
+            <!-- Input để người dùng chọn hình ảnh mới -->
+            <input asp-for="HinhAnh" type="file" name="imageFile" class="form-control" />
+            <input type="hidden" name="existingImagePath" value="@Model.HinhAnh" />
+            <span asp-validation-for="HinhAnh" class="text-danger"></span>
+            <div class="form-group">
+                <label asp-for="Loai" class="control-label"></label>
+                <input asp-for="Loai" class="form-control" />
+                <span asp-validation-for="Loai" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="SoLuong" class="control-label"></label>
+                <input asp-for="SoLuong" class="form-control" />
+                <span asp-validation-for="SoLuong" class="text-danger"></span>
+            </div>
+           
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="/Foods/Getall">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

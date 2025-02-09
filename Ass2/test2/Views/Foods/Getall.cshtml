@@ -1,0 +1,52 @@
+﻿@model IEnumerable<test2.Models.Food>
+
+@{
+    ViewData["Title"] = "Getall";
+}
+
+<h1 class="mt-4 mb-4">Danh Sách Thực Phẩm</h1>
+
+<p>
+    <a asp-action="Create" class="btn btn-primary mb-3">Tạo Mới</a>
+</p>
+
+<div class="table-responsive">
+    <table class="table table-bordered table-striped">
+        <thead class="table-dark">
+            <tr>
+                <th>@Html.DisplayNameFor(model => model.MonAnID)</th>
+                <th>@Html.DisplayNameFor(model => model.Ten)</th>
+                <th>@Html.DisplayNameFor(model => model.MoTa)</th>
+                <th>@Html.DisplayNameFor(model => model.Gia)</th>
+                <th>@Html.DisplayNameFor(model => model.HinhAnh)</th>
+                <th>@Html.DisplayNameFor(model => model.Loai)</th>
+                <th>@Html.DisplayNameFor(model => model.SoLuong)</th>
+                <th>@Html.DisplayNameFor(model => model.TinhTrang)</th>
+                <th>Hành Động</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@Html.DisplayFor(modelItem => item.MonAnID)</td>
+                    <td>@Html.DisplayFor(modelItem => item.Ten)</td>
+                    <td>@Html.DisplayFor(modelItem => item.MoTa)</td>
+                    <td>@Html.DisplayFor(modelItem => item.Gia)</td>
+                    <td>
+                        <img src="@item.HinhAnh" alt="@item.Ten" class="img-fluid" style="max-width: 100px; height: auto;" />
+                    </td>
+                    <td>@Html.DisplayFor(modelItem => item.Loai)</td>
+                    <td>@Html.DisplayFor(modelItem => item.SoLuong)</td>
+                    <td>@Html.DisplayFor(modelItem => item.TinhTrang)</td>
+                    <td>
+                        <a asp-action="Update" asp-route-id="@item.MonAnID" class="btn btn-sm btn-warning">Sửa</a>
+                        <a asp-action="Details" asp-route-id="@item.MonAnID" class="btn btn-sm btn-info">Chi Tiết</a>
+                        <a asp-action="Delete" asp-route-id="@item.MonAnID" class="btn btn-sm btn-danger" onclick="return confirm('Bạn có chắc chắn muốn xóa?');">Xóa</a>
+                    </td>
+                </tr>
+            }
+            <a asp-action="Foods/Trangchu" class="btn btn-sm btn-warning">Về trang chủ</a>
+        </tbody>
+    </table>
+</div>
