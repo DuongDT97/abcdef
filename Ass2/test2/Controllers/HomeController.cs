@@ -15,8 +15,12 @@ namespace test2.Controllers
 
         public IActionResult Index()
         {
+<<<<<<< HEAD
             return View();
             //toi bi ngu
+=======
+ return View();
+>>>>>>> c01c61294cefb67489f6b748b92fc5e0149df224
         }
 
         public IActionResult Privacy()
