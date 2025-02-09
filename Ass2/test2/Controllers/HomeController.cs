@@ -15,8 +15,7 @@ namespace test2.Controllers
 
         public IActionResult Index()
         {
-            return Duong();
-//return View
+ 
         }
 
         public IActionResult Privacy()
